@@ -1,0 +1,88 @@
+
+CREATE TABLE producto (
+                id_producto INT AUTO_INCREMENT NOT NULL,
+                precio float (4,2) NOT NULL,
+                nombre_producto VARCHAR(20) NOT NULL,
+                PRIMARY KEY (id_producto)
+);
+
+
+CREATE TABLE persona (
+                id_persona INT AUTO_INCREMENT NOT NULL,
+                nombre VARCHAR(20) NOT NULL,
+                apellidos VARCHAR(30) NOT NULL,
+                DNI NUMERIC(8) NOT NULL,
+                PRIMARY KEY (id_persona)
+);
+
+
+CREATE TABLE cliente (
+                id_cliente INT AUTO_INCREMENT NOT NULL,
+                id_persona INT NOT NULL,
+                PRIMARY KEY (id_cliente)
+);
+
+
+CREATE TABLE vendedor  (
+                id_vendedor INT AUTO_INCREMENT NOT NULL,
+                id_persona INT NOT NULL,
+                direccion VARCHAR(30) NOT NULL,
+                telefono NUMERIC(9) NOT NULL,
+                PRIMARY KEY (id_vendedor)
+);
+
+
+CREATE TABLE venta (
+                id_venta INT AUTO_INCREMENT NOT NULL,
+                id_cliente INT NOT NULL,
+                id_vendedor INT NOT NULL,
+                importe float (4,2) NOT NULL,
+                fecha_venta DATE NOT NULL,
+                PRIMARY KEY (id_venta)
+);
+
+
+CREATE TABLE venta_producto (
+                id_ventaProductp INT AUTO_INCREMENT NOT NULL,
+                id_venta INT NOT NULL,
+                id_producto INT NOT NULL,
+                cantidad NUMERIC(10) NOT NULL,
+                PRIMARY KEY (id_ventaProductp)
+);
+
+
+ALTER TABLE venta_producto ADD CONSTRAINT producto_venta_producto_fk
+FOREIGN KEY (id_producto)
+REFERENCES producto (id_producto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE vendedor  ADD CONSTRAINT persona_vendedor__fk
+FOREIGN KEY (id_persona)
+REFERENCES persona (id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE cliente ADD CONSTRAINT persona_cliente_fk
+FOREIGN KEY (id_persona)
+REFERENCES persona (id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE venta ADD CONSTRAINT cliente_venta_fk
+FOREIGN KEY (id_cliente)
+REFERENCES cliente (id_cliente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE venta ADD CONSTRAINT vendedor__venta_fk
+FOREIGN KEY (id_vendedor)
+REFERENCES vendedor  (id_vendedor)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE venta_producto ADD CONSTRAINT venta_venta_producto_fk
+FOREIGN KEY (id_venta)
+REFERENCES venta (id_venta)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;

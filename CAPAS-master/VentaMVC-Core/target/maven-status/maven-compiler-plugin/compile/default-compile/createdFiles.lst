@@ -1,0 +1,12 @@
+pe\edu\upeu\venta\modelo\VentaProducto.class
+pe\edu\upeu\venta\modelo\Vendedor.class
+pe\edu\upeu\venta\modelo\Producto.class
+pe\edu\upeu\venta\dao\VentaDaoImpl.class
+pe\edu\upeu\venta\modelo\Cliente.class
+pe\edu\upeu\venta\SysDataAccess.class
+pe\edu\upeu\venta\HibernateConfiguration.class
+pe\edu\upeu\venta\modelo\Persona.class
+pe\edu\upeu\venta\dao\VentaDaoI.class
+pe\edu\upeu\venta\modelo\Venta.class
+pe\edu\upeu\venta\dao\PersonaDaoImpl.class
+pe\edu\upeu\venta\dao\PersonaDaoI.class
